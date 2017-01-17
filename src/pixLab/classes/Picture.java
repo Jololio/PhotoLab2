@@ -119,6 +119,8 @@ public class Picture extends SimplePicture
     } 
   }
   
+  /**Method that does the same as mirrorVertical() but
+   * from right to left */
   public void mirrorVerticalRightToLeft()
   {
 	  //Same setup for LtR
@@ -139,6 +141,8 @@ public class Picture extends SimplePicture
 	  }
   }
   
+ /**Method to mirror a part of the picture from the horizontal
+  * center of the picture from bottom to top */
   public void mirrorHorizontalBottomToTop()
   {
 	  Pixel [][] pixels = this.getPixels2D();
