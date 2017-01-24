@@ -184,7 +184,6 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -231,6 +230,40 @@ public class Picture extends SimplePicture
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
+  }
+  
+  public void improvedEdgeDetection(int edgeDist)
+  {
+	  Pixel topPixel = null;
+	  Pixel bottomPixel = null;
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+	  Color topColor = null;
+	  Color rightColor = null;
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels[0].length-1; col++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = pixels[row][col+1];
+			  rightColor = rightPixel.getColor();
+			  if (leftPixel.colorDistance(rightColor) > edgeDist)
+				  leftPixel.setColor(Color.BLACK);
+			  else
+				  leftPixel.setColor(Color.WHITE);
+		  }
+		  for (int col = 0; col < pixels[0].length-1; col++)
+		  {
+			  bottomPixel = pixels[col][row];
+			  topPixel = pixels[col][row+1];
+			  topColor = topPixel.getColor();
+			  if (bottomPixel.colorDistance(topColor) > edgeDist)
+				  bottomPixel.setColor(Color.BLACK);
+			  else
+				  bottomPixel.setColor(Color.WHITE);
+		  }
+	  }
   }
   
   
