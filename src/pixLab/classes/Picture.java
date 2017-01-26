@@ -305,4 +305,63 @@ public class Picture extends SimplePicture
     beach.explore();
   }
   
+  public void fullRandom()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  for (Pixel [] row : currentPicture)
+	  {
+		  for(Pixel currentPixel : row)
+		  {
+			  int red = (int) (Math.random() * 256);
+			  int green = (int) (Math.random() * 256);
+			  int blue = (int) (Math.random() * 256);
+			  
+			  currentPixel.setColor(new Color(red, green, blue)); 
+		  }
+		  
+	  }
+  }
+  
+  public void fullRandomBlue()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  	for (Pixel [] row : currentPicture)
+	  	{
+	  		for (Pixel currentPixel : row)
+	  		{
+	  			int blue = (int) (Math.random() * 256);
+	  			
+	  			currentPixel.setColor(new Color(currentPixel.getRed(), blue, currentPixel.getGreen()));
+	  		}
+	  	}
+  }
+  
+  public void fullRandomRed()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D();
+	  	for (Pixel [] row : currentPicture)
+	  	{
+	  		for (Pixel currentPixel : row)
+	  		{
+	  			int red = (int) (Math.random() * 256);
+	  			
+	  			currentPixel.setColor(new Color(currentPixel.getGreen(), red, currentPixel.getBlue()));
+	  		}
+	  	}
+  }
+  
+  public void fullRandomGreen()
+  {
+	  Pixel [][] currentPicture = this.getPixels2D(); 
+	  	for (Pixel [] row : currentPicture)
+	  	{
+	  		for (Pixel currentPixel : row)
+	  		{
+	  			int green = (int) (Math.random() * 256);
+	  			
+	  			currentPixel.setColor(new Color(currentPixel.getRed(), green, currentPixel.getBlue()));
+	  		}
+	  	}
+  }
+  
 } // this } is the end of class Picture, put all new methods before this
